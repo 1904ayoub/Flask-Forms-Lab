@@ -20,13 +20,13 @@ def login():
 		password1=request.form['password']
 		if username == username1 and password==password1:
 			return redirect(url_for('home'))
-	else:
-		return render_template('login.html')
+
+	return render_template('login.html')
 
 @app.route('/home')
 def home():
 	return render_template('home.html',facebook_friends=facebook_friends)
-@app.route('/friend_exists/<string:name>')
+@app.route('/friend_exists/<string:name>',methods=['GET','POST'])
 def friend(name):
 	if name in facebook_friends:
 		result=True
